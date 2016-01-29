@@ -1,10 +1,10 @@
-/*! Raven.js 1.1.22 (6278810) | github.com/getsentry/raven-js */
+/*! Raven.js 1.1.22 (3f1d6b1) | github.com/getsentry/raven-js */
 
 /*
  * Includes TraceKit
  * https://github.com/getsentry/TraceKit
  *
- * Copyright 2015 Matt Robenolt and other contributors
+ * Copyright 2016 Matt Robenolt and other contributors
  * Released under the BSD license
  * https://github.com/getsentry/raven-js/blob/master/LICENSE
  *
@@ -1349,6 +1349,10 @@ var Raven = {
         // probably something you should see:
         if (!!globalOptions.ignoreErrors.test && globalOptions.ignoreErrors.test(msg)) {
             return;
+        }
+
+        if (hasJSON && typeof msg === "object") {
+            msg = JSON.stringify(msg);
         }
 
         // Fire away!

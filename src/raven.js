@@ -273,6 +273,10 @@ var Raven = {
             return;
         }
 
+        if (hasJSON && typeof msg === "object") {
+            msg = JSON.stringify(msg);
+        }
+
         // Fire away!
         send(
             objectMerge({
